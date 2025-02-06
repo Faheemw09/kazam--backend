@@ -9,7 +9,8 @@ const app = express();
 const corsOptions = {
   origin: "https://kazam-fe-cyan.vercel.app",
   methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
