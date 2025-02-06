@@ -6,7 +6,13 @@ import userRoutes from "./routes/auth";
 import taskRoutes from "./routes/task";
 dotenv.config();
 const app = express();
-app.use(cors());
+const corsOptions = {
+  origin: "https://kazam-fe-cyan.vercel.app",
+  methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use("/api/auth", userRoutes);
 app.use("/api/tasks", taskRoutes);
