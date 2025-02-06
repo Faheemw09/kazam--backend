@@ -18,7 +18,7 @@ router
 
 router
   .route("/:id")
-  .patch(updateTask as express.RequestHandler)
+  .put(updateTask as express.RequestHandler)
   .delete(deleteTask as express.RequestHandler);
 
 export default router;
