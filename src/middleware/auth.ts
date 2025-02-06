@@ -11,6 +11,7 @@ export const auth = (
   next: NextFunction
 ): void => {
   const authHeader = req.headers.authorization;
+  console.log("Auth Header:", authHeader);
 
   if (!authHeader?.startsWith("Bearer ")) {
     res.status(401).json({ message: "Unauthorized" });

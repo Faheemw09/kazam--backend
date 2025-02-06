@@ -6,14 +6,22 @@ import userRoutes from "./routes/auth";
 import taskRoutes from "./routes/task";
 dotenv.config();
 const app = express();
+
 const corsOptions = {
   origin: "*",
   methods: ["GET", "POST", "PATCH", "PUT", "DELETE"],
-  allowedHeaders: ["Content-Type", "Authorization", "X-Requested-With"],
-  credentials: true,
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true, // If using cookies, you need specific origins, not "*"
+  optionsSuccessStatus: 204,
 };
+
 app.use(cors(corsOptions));
+app.options("*", cors(corsOptions)); // Allow preflight requests
+
+app.options("*", cors(corsOptions));
+
 app.use(express.json());
+
 app.use("/api/auth", userRoutes);
 app.use("/api/tasks", taskRoutes);
 const Port = process.env.PORT as string;
